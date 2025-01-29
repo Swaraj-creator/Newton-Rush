@@ -25,7 +25,7 @@ div.mainBox div.background {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(6px);
+    filter: blur(6px) brightness(0.6);
 }
 
 div.mainBox div.tree {
@@ -36,24 +36,27 @@ div.mainBox div.tree {
     bottom: 0px;
     background-size: 100% 100%;
     background-position: center 20px;
+    filter: drop-shadow(0px 0px 40px black);
 }
 div.grass {
     background-image: url("Sprites/Grass_Ground_with_Flowers_PNG_Clipart_Picture.png");
-    height: 100px;
+    height: 70px;
     width: 100%;
     position: absolute;
     bottom: 0px;
     z-index: 10;
     background-size: contain;
+    filter: brightness(0.7);
 }
 div.newton {
     width: auto;
     height: auto;
     position: absolute;
-    bottom: 30px;
+    bottom: 0px;
     left: 50px;
+    filter: drop-shadow(0px 0px 10px black);
 }
 div.newton img {
-    height: 215px;
+    height: 180px;
     user-select: none;
 }
