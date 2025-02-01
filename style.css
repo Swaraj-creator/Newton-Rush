@@ -59,4 +59,18 @@ div.newton {
 div.newton img {
     height: 180px;
     user-select: none;
+    pointer-events: none;
+}
+
+div.apple {
+    position: absolute;
+    top: 10px;
+    height: auto;
+    width: auto;
+    filter: drop-shadow(0px 0px 10px black);
+}
+div.apple img {
+    width: 50px;
+    user-select: none;
+    pointer-events: none;
 }
