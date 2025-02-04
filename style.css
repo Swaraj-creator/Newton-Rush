@@ -13,10 +13,12 @@
 body {
     min-height: 100vh;
     background-color: rgb(0, 0, 0);
+    overflow: hidden;
 }
 div.mainBox {
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 div.mainBox div.background {
     height: 100%;
@@ -56,6 +58,19 @@ div.newton {
     left: 50px;
     filter: drop-shadow(0px 0px 10px black);
 }
+div.newton div.stars {
+    width: 100%;
+    height: 100px;
+    background: url("Sprites/ZUiY.gif");
+    position: absolute;
+    top: -30px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(2px 2px 6px black);
+    display: none;
+
+}
 div.newton img {
     height: 180px;
     user-select: none;
@@ -68,9 +83,22 @@ div.apple {
     height: auto;
     width: auto;
     filter: drop-shadow(0px 0px 10px black);
+    transform: scale(0);
 }
 div.apple img {
     width: 50px;
     user-select: none;
     pointer-events: none;
+}
+div.bomb img {
+    width: 80px;
+    user-select: none;
+    pointer-events: none;
+}
+div.bomb {
+    position: absolute;
+    top: -200px;
+    height: auto;
+    width: auto;
+    filter: drop-shadow(0px 0px 10px black);
 }
