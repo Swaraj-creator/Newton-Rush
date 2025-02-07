@@ -40,6 +40,7 @@ let pressedKeys = {
     ArrowRight: false
 }
 let player = {
+    freezed: false,
     started: true,
     pos: 150
 }
@@ -86,13 +87,15 @@ function playGame() {
     if(player.started) {
 
         //to control player's movement
-        if(pressedKeys.ArrowLeft) {
-            if(player.pos-10 > 100) {
-                player.pos -= 10;
-            }
-        } if(pressedKeys.ArrowRight) {
-            if(player.pos+newton.clientWidth+10 < window.innerWidth - 100) {
-                player.pos += 10;
+        if(!player.freezed) {
+            if(pressedKeys.ArrowLeft) {
+                if(player.pos-10 > 100) {
+                    player.pos -= 10;
+                }
+            } if(pressedKeys.ArrowRight) {
+                if(player.pos+newton.clientWidth+10 < window.innerWidth - 100) {
+                    player.pos += 10;
+                }
             }
         }
         
@@ -135,8 +138,30 @@ function playGame() {
             }
         }
 
+        let nW = newton.getBoundingClientRect().width;
+        let nH = newton.getBoundingClientRect().height;
+        let nX = player.pos;
+        let nY = newton.getBoundingClientRect().top;
+        {
+            let bombW = bomb.getBoundingClientRect().width;
+            let bombH = bomb.getBoundingClientRect().height;
+            let bombX = bomb.getBoundingClientRect().left;
+            let bombY = bomb.getBoundingClientRect().top;
+            
+            if((bombX > nX) && ((bombW + bombX) < (nW + nX)) && (bombY > nY) && ((bombY + bombH) < (nH + nY))) {
+                newton.querySelector("div.stars").style.display = "block";
+                player.freezed = true;
+                setTimeout(() => {
+                    newton.querySelector("div.stars").style.display = "none";
+                    player.freezed = false;
+                }, 3000);
+            }
+        }
+
         //to make newton move
-        newton.style.left = `${player.pos}px`;
+        if(!player.freezed) {
+            newton.style.left = `${player.pos}px`;
+        }
         
         window.requestAnimationFrame(playGame);
     }
